@@ -1,0 +1,12 @@
+services:
+  tide-api:
+    build: .
+    container_name: hon_dau_tide_api
+    restart: unless-stopped
+    ports:
+      # Map cổng 8000 trên host tới cổng 8000 trong container
+      - "8666:8000"
+    volumes:
+      # Đồng bộ mã nguồn hiện tại với thư mục /app trong container 
+      # (Giúp cập nhật code mà không cần rebuild image)
+      - ./main.py:/app/main.py
